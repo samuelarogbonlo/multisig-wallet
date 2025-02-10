@@ -1,0 +1,41 @@
+{
+    "name": "multisig-wallet",
+    "version": "1.0.0",
+    "description": "K-of-N Multisig Wallet with arbitrary call support",
+    "scripts": {
+        "clean": "hardhat clean",
+        "compile": "hardhat compile",
+        "test": "hardhat test",
+        "test:coverage": "hardhat coverage",
+        "node": "hardhat node",
+        "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+        "verify:local": "hardhat run scripts/verify.ts --network localhost",
+        "lint": "solhint 'contracts/**/*.sol'",
+        "lint:fix": "solhint 'contracts/**/*.sol' --fix",
+        "format": "prettier --write ."
+    },
+    "keywords": [
+        "ethereum",
+        "solidity",
+        "multisig",
+        "hardhat"
+    ],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+        "@types/chai": "^4.3.11",
+        "@types/mocha": "^10.0.6",
+        "chai": "^4.3.7",
+        "dotenv": "^16.4.7",
+        "ethers": "^6.13.5",
+        "hardhat": "^2.19.4",
+        "hardhat-gas-reporter": "^1.0.9",
+        "prettier": "^3.5.0",
+        "prettier-plugin-solidity": "^1.4.2",
+        "solhint": "^4.0.0",
+        "solidity-coverage": "^0.8.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.3.3"
+    }
+}
