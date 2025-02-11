@@ -2,6 +2,55 @@
 
 A secure k-of-n multisig wallet implementation with support for arbitrary contract calls and signer set updates. This implementation includes full testing capabilities and a comprehensive CLI interface for all operations.
 
+## Architecture
+
+```mermaid
+graph TB
+    subgraph "Smart Contract Layer"
+        direction TB
+        MS[MultisigWallet Contract]
+        subgraph "State Management"
+            direction LR
+            TX[Transaction Storage]
+            SIG[Signer Registry]
+            CONF[Confirmation State]
+        end
+        MS --> TX & SIG & CONF
+    end
+
+    USERS[" Authorized Signers "]
+    ACTIONS[" Transaction Flow:<br/>Submit → Confirm → Execute "]
+
+    subgraph "Interface Layer"
+        direction LR
+        CLI[CLI Interface]
+        DEPLOY[Deployment Scripts]
+        TASKS[Hardhat Tasks]
+    end
+
+    USERS ==> ACTIONS
+    ACTIONS ==> CLI
+    CLI --> MS
+    DEPLOY & TASKS --> MS
+    
+    MS -.-> |"Executes<br/>Approved<br/>Transactions"| EXT[External Contracts]
+
+    style MS fill:#cc6600,stroke:#333,stroke-width:2px,color:#fff
+    style CLI fill:#004d99,stroke:#333,stroke-width:2px,color:#fff
+    style USERS fill:#006633,stroke:#333,stroke-width:2px,color:#fff
+    style ACTIONS fill:#006633,stroke:#333,stroke-width:2px,color:#fff
+    style EXT fill:#993366,stroke:#333,stroke-width:2px,color:#fff
+    style TX fill:#994d00,stroke:#333,stroke-width:2px,color:#fff
+    style SIG fill:#994d00,stroke:#333,stroke-width:2px,color:#fff
+    style CONF fill:#994d00,stroke:#333,stroke-width:2px,color:#fff
+    style DEPLOY fill:#004d99,stroke:#333,stroke-width:2px,color:#fff
+    style TASKS fill:#004d99,stroke:#333,stroke-width:2px,color:#fff
+
+    linkStyle 0,1 stroke:#006633,stroke-width:3px
+    linkStyle 2,3,4 stroke:#333,stroke-width:2px
+    linkStyle 5 stroke:#993366,stroke-width:2px,stroke-dasharray: 5 5
+```
+
 ## Features
 
 - k-of-n signature scheme
