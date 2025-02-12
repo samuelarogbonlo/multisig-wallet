@@ -234,85 +234,18 @@ The contract includes several gas optimization features:
 - Optimized data structures
 - Event logging for off-chain tracking
 
-## Demo Output
 
-Here are actual test results demonstrating the full functionality:
+## Contributing
 
-```bash
-# Check initial transaction details
-➜ npx hardhat get-tx-details \
-  --contract 0x5FbDB2315678afecb367f032d93F642f64180aa3 \
-  --txindex 0 \
-  --network localhost
-Transaction 0:
-- To: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
-- Value: 0.1 ETH
-- Data: 0x
-- Executed: false
-- Confirmations: 2
+We welcome contributions! 
 
-# Fund the multisig wallet
-➜ npx hardhat run scripts/fund-multisig.ts --network localhost
-Funding multisig wallet...
-Sending 1.0 ETH to 0x5FbDB2315678afecb367f032d93F642f64180aa3
-Funding successful! Transaction hash: 0x7ef9d88b08af200a2cf4b6deab84e2e67b47621fa637763f818167f678381d8c
-
-# Check multisig balance
-➜ npx hardhat get-balance \
-  --contract 0x5FbDB2315678afecb367f032d93F642f64180aa3 \
-  --network localhost
-Multisig wallet balance: 1.0 ETH
-
-# Execute transaction
-➜ npx hardhat execute-tx \
-  --contract 0x5FbDB2315678afecb367f032d93F642f64180aa3 \
-  --txindex 0 \
-  --network localhost
-Transaction executed: 0xed7790495eb050201c6bfdfbfc88c5ebf43f12c394418740df246d8b16d8a4d3
-
-# Verify recipient balance
-➜ npx hardhat get-recipient-balance \
-  --address 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 \
-  --network localhost
-Recipient balance: 10000.099798344088286068 ETH
-
-# Check updated multisig balance
-➜ npx hardhat get-balance \
-  --contract 0x5FbDB2315678afecb367f032d93F642f64180aa3 \
-  --network localhost
-Multisig wallet balance: 0.9 ETH
-
-# Verify transaction execution
-➜ npx hardhat get-tx-details \
-  --contract 0x5FbDB2315678afecb367f032d93F642f64180aa3 \
-  --txindex 0 \
-  --network localhost
-Transaction 0:
-- To: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
-- Value: 0.1 ETH
-- Data: 0x
-- Executed: true
-- Confirmations: 2
-
-# View current signers
-➜ npx hardhat get-signers \
-  --contract 0x5FbDB2315678afecb367f032d93F642f64180aa3 \
-  --network localhost
-Current signers: Result(3) [
-  '0x70997970C51812dc3A010C7d01b50e0d17dc79C8',
-  '0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC',
-  '0x90F79bf6EB2c4f870365E785982E1f101E93b906'
-]
-```
-
-This output demonstrates:
-1. Transaction submission and confirmation
-2. Wallet funding
-3. Transaction execution
-4. Balance updates
-5. Proper signer management
-6. Complete transaction lifecycle
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
