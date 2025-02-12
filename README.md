@@ -139,6 +139,9 @@ npx hardhat submit-tx \
 ```
 
 ### Confirm Transaction
+
+N/B: Use the second signer for both confirmation and execution because to meet the 2-of-3 threshold, you need another signer to confirm.
+
 ```bash
 npx hardhat confirm-tx \
   --contract <ADDRESS> \
